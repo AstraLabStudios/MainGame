@@ -1,12 +1,10 @@
 {
-    "name": "MainGame.Editor",
-    "rootNamespace": "MainGame.Editor",
+    "name": "MainGame.ScriptableObjects",
+    "rootNamespace": "MainGame.ScriptableObjects",
     "references": [
-        "GUID:ce0d96f2854b0f44b9e58a5db4fa8f02"
+        "GUID:3d2ce4e80ac5111428ba9b06f056e282"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

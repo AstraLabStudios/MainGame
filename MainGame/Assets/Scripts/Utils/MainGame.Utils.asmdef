@@ -1,12 +1,8 @@
 {
-    "name": "MainGame.Editor",
-    "rootNamespace": "MainGame.Editor",
-    "references": [
-        "GUID:ce0d96f2854b0f44b9e58a5db4fa8f02"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "name": "MainGame.Utils",
+    "rootNamespace": "MainGame.Utils",
+    "references": [],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
