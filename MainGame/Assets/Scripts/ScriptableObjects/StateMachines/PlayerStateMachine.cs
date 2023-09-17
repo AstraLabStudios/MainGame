@@ -15,7 +15,5 @@
         public Vector2 CurrentMovementInput { get; set; }
 
         public Vector3 CurrentMovement = Vector3.zero; // TODO: consider to remove this
-
-        public Vector2 CurrentCameraRotation { get; set; }
     }
 }
