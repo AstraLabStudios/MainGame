@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Camera",
+                    "type": "Value",
+                    "id": "60d0d99f-d2e0-430f-b98e-8907454d371b",
+                    "expectedControlType": "Vector2",
+                    "processors": "NormalizeVector2",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -93,6 +102,17 @@
                 },
                 {
                     "name": "",
+                    "id": "97ebf8c3-ccea-4e42-a906-cb5ed181f44a",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hurry",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6ffcfbf7-87a9-46d4-8c6a-de7ec5c440bf",
                     "path": "<Keyboard>/shift",
                     "interactions": "",
@@ -104,12 +124,23 @@
                 },
                 {
                     "name": "",
-                    "id": "97ebf8c3-ccea-4e42-a906-cb5ed181f44a",
-                    "path": "<Gamepad>/leftStick/down",
+                    "id": "ab6b94fb-b891-4479-92c4-b805c7edf634",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Hurry",
+                    "action": "Camera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3e35cf07-02dc-47bb-8e67-f5daccf4ee5e",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Camera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

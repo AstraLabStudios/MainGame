@@ -17,7 +17,9 @@
 
         public override void UpdateState(StateMachineBase context)
         {
-            
+            PlayerStateMachine castedContext = context as PlayerStateMachine;
+
+            _ = castedContext.Controller.Move(castedContext.CurrentMovement * Time.deltaTime);
         }
     }
 }

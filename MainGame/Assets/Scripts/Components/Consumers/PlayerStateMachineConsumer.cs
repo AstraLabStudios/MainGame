@@ -16,6 +16,7 @@
             
             StateMachine.Controller = _characterController;
             StateMachine.PlayerInput = new InputMaps.PlayerInput();
+            
             StateMachine.PlayerInput.PlayerControls.Move.started += OnMoveInput;
             StateMachine.PlayerInput.PlayerControls.Move.canceled += OnMoveInput;
             StateMachine.PlayerInput.PlayerControls.Move.performed += OnMoveInput;
@@ -24,13 +25,6 @@
         private void OnEnable() => StateMachine.PlayerInput.PlayerControls.Enable();
 
         private void OnDisable() => StateMachine.PlayerInput.PlayerControls.Disable();
-
-        protected override void Update()
-        {
-            _ = StateMachine.Controller.Move(StateMachine.CurrentMovement * Time.deltaTime);
-
-            base.Update();
-        }
 
         private void OnMoveInput(CallbackContext context)
         {

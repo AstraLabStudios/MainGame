@@ -46,6 +46,15 @@ namespace MainGame.InputMaps
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Camera"",
+                    ""type"": ""Value"",
+                    ""id"": ""60d0d99f-d2e0-430f-b98e-8907454d371b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": ""NormalizeVector2"",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -117,6 +126,17 @@ namespace MainGame.InputMaps
                 },
                 {
                     ""name"": """",
+                    ""id"": ""97ebf8c3-ccea-4e42-a906-cb5ed181f44a"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hurry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""6ffcfbf7-87a9-46d4-8c6a-de7ec5c440bf"",
                     ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
@@ -128,12 +148,23 @@ namespace MainGame.InputMaps
                 },
                 {
                     ""name"": """",
-                    ""id"": ""97ebf8c3-ccea-4e42-a906-cb5ed181f44a"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""id"": ""ab6b94fb-b891-4479-92c4-b805c7edf634"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Hurry"",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e35cf07-02dc-47bb-8e67-f5daccf4ee5e"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -146,6 +177,7 @@ namespace MainGame.InputMaps
             m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
             m_PlayerControls_Move = m_PlayerControls.FindAction("Move", throwIfNotFound: true);
             m_PlayerControls_Hurry = m_PlayerControls.FindAction("Hurry", throwIfNotFound: true);
+            m_PlayerControls_Camera = m_PlayerControls.FindAction("Camera", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -209,12 +241,14 @@ namespace MainGame.InputMaps
         private List<IPlayerControlsActions> m_PlayerControlsActionsCallbackInterfaces = new List<IPlayerControlsActions>();
         private readonly InputAction m_PlayerControls_Move;
         private readonly InputAction m_PlayerControls_Hurry;
+        private readonly InputAction m_PlayerControls_Camera;
         public struct PlayerControlsActions
         {
             private @PlayerInput m_Wrapper;
             public PlayerControlsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_PlayerControls_Move;
             public InputAction @Hurry => m_Wrapper.m_PlayerControls_Hurry;
+            public InputAction @Camera => m_Wrapper.m_PlayerControls_Camera;
             public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -230,6 +264,9 @@ namespace MainGame.InputMaps
                 @Hurry.started += instance.OnHurry;
                 @Hurry.performed += instance.OnHurry;
                 @Hurry.canceled += instance.OnHurry;
+                @Camera.started += instance.OnCamera;
+                @Camera.performed += instance.OnCamera;
+                @Camera.canceled += instance.OnCamera;
             }
 
             private void UnregisterCallbacks(IPlayerControlsActions instance)
@@ -240,6 +277,9 @@ namespace MainGame.InputMaps
                 @Hurry.started -= instance.OnHurry;
                 @Hurry.performed -= instance.OnHurry;
                 @Hurry.canceled -= instance.OnHurry;
+                @Camera.started -= instance.OnCamera;
+                @Camera.performed -= instance.OnCamera;
+                @Camera.canceled -= instance.OnCamera;
             }
 
             public void RemoveCallbacks(IPlayerControlsActions instance)
@@ -261,6 +301,7 @@ namespace MainGame.InputMaps
         {
             void OnMove(InputAction.CallbackContext context);
             void OnHurry(InputAction.CallbackContext context);
+            void OnCamera(InputAction.CallbackContext context);
         }
     }
 }

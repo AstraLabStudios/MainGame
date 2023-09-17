@@ -8,6 +8,7 @@ namespace MainGame.Components.Consumers
     {
         public T StateMachine => _stateMachine;
 
+        [Header("State machine")]
         [SerializeField]
         protected T _stateMachine;
 
