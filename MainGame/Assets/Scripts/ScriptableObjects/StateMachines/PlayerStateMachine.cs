@@ -1,16 +1,19 @@
 ﻿namespace MainGame.ScriptableObjects.StateMachines
 {
+    using MainGame.InputMaps;
     using UnityEngine;
-    using UnityEngine.InputSystem;
 
     [CreateAssetMenu(menuName = "MainGame/Scriptable objects/State machines/Player state machine", fileName = nameof(PlayerStateMachine))]
     public class PlayerStateMachine : StateMachineBase 
     {
-        public bool IsMoving { get; private set; }
+        public bool IsMoving => CurrentMovementInput.x != 0 || CurrentMovementInput.y != 0;
 
-        public PlayerInput PlayerInput => _playerInput;
+        public CharacterController Controller { get; set; }
 
-        [SerializeField]
-        private PlayerInput _playerInput;
+        public PlayerInput PlayerInput { get; set; }
+
+        public Vector2 CurrentMovementInput { get; set; }
+
+        public Vector3 CurrentMovement = Vector3.zero; // TODO: consider to remove this
     }
 }

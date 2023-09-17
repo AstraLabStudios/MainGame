@@ -9,6 +9,7 @@ namespace MainGame.ScriptableObjects.StateMachines
     {
         public StateBase CurrentState => _currentState;
 
+        [Header("State")]
         [SerializeField]
         private StateBase _currentState;
 

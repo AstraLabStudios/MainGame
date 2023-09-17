@@ -1,9 +1,8 @@
 {
-    "name": "MainGame.Controllers",
-    "rootNamespace": "MainGame.Controllers",
+    "name": "MainGame.InputMaps",
+    "rootNamespace": "MainGame.InputMaps",
     "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:180d22d2a5e22f04d91d0b8963ba2b12"
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
