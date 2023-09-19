@@ -1,0 +1,23 @@
+{
+    "name": "MainGame",
+    "rootNamespace": "MainGame",
+    "references": [
+        "GUID:fd58fc1ee7a091144b583779a470761c",
+        "GUID:eb1bcaf186d0b6241a563d8c663fecd9",
+        "GUID:ce0d96f2854b0f44b9e58a5db4fa8f02",
+        "GUID:2b3a1d8bb806dd2469b63a0c52e9c4ea",
+        "GUID:3350a364c83b6c34cbb5474ee2acf86c",
+        "GUID:849892c684af59640b32782c15b3f06c",
+        "GUID:3d2ce4e80ac5111428ba9b06f056e282",
+        "GUID:180d22d2a5e22f04d91d0b8963ba2b12"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
