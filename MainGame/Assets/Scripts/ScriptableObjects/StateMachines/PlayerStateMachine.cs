@@ -1,10 +1,11 @@
 ﻿namespace MainGame.ScriptableObjects.StateMachines
 {
     using MainGame.InputMaps;
+    using MainGame.ScriptableObjects.StateMachines.States;
     using UnityEngine;
 
     [CreateAssetMenu(menuName = "MainGame/Scriptable objects/State machines/Player state machine", fileName = nameof(PlayerStateMachine))]
-    public class PlayerStateMachine : StateMachineBase 
+    public class PlayerStateMachine : StateMachineBase<PlayerState>
     {
         public bool IsMoving => CurrentMovementInput.x != 0 || CurrentMovementInput.y != 0;
 

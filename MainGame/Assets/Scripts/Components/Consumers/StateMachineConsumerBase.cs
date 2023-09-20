@@ -1,10 +1,11 @@
 namespace MainGame.Components.Consumers
 {
-    using MainGame.ScriptableObjects.StateMachines;
+    using MainGame.ScriptableObjects.StateMachines.Interfaces;
     using UnityEngine;
 
-    public abstract class StateMachineConsumerBase<T> : MonoBehaviour
-        where T : StateMachineBase
+    public abstract class StateMachineConsumerBase<T, J> : MonoBehaviour
+        where T : IStateMachine<T, J>
+        where J : IState<T, J>
     {
         public T StateMachine => _stateMachine;
 

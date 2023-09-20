@@ -1,4 +1,14 @@
 ﻿namespace MainGame.ScriptableObjects.StateMachines.States
 {
-    public abstract class PlayerState : StateBase { }
+    using MainGame.ScriptableObjects.StateMachines.Interfaces;
+    using MainGame.ScriptableObjects.StateMachines.Transitions;
+    using UnityEngine;
+
+    public abstract class PlayerState : StateBase<PlayerStateMachine> 
+    {
+        public override ITransition<PlayerStateMachine, StateBase<PlayerStateMachine>>[] Transitions => _transitions;
+
+        [SerializeField]
+        private PlayerTransition[] _transitions;
+    }
 }

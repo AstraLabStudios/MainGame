@@ -1,19 +1,17 @@
 ﻿namespace MainGame.ScriptableObjects.StateMachines.States
 {
-    using MainGame.ScriptableObjects.StateMachines.Transitions;
+    using MainGame.ScriptableObjects.StateMachines.Interfaces;
     using UnityEngine;
 
-    public abstract class StateBase : ScriptableObject
+    public abstract class StateBase<T> : ScriptableObject, IState<T, StateBase<T>>
+        where T : IStateMachine<T, StateBase<T>>
     {
-        public TransitionBase[] Transitions => _transitions;
+        public abstract ITransition<T, StateBase<T>>[] Transitions { get; }
 
-        [SerializeField]
-        private TransitionBase[] _transitions;
-
-        public abstract void EnterState(StateMachineBase context);
-
-        public abstract void UpdateState(StateMachineBase context);
-
-        public abstract void ExitState(StateMachineBase context);
+        public virtual void EnterState(IStateMachine<T, StateBase<T>> context) { }
+               
+        public virtual void UpdateState(IStateMachine<T, StateBase<T>> context) { }
+               
+        public virtual void ExitState(IStateMachine<T, StateBase<T>> context) { }
     }
 }

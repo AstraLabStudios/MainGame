@@ -1,10 +1,11 @@
 ﻿namespace MainGame.Components.Consumers
 {
     using MainGame.ScriptableObjects.StateMachines;
+    using MainGame.ScriptableObjects.StateMachines.States;
     using UnityEngine;
     using static UnityEngine.InputSystem.InputAction;
 
-    public class PlayerStateMachineConsumer : StateMachineConsumerBase<PlayerStateMachine>
+    public class PlayerStateMachineConsumer : StateMachineConsumerBase<PlayerStateMachine, PlayerState>
     {
         [Header("Components")]
         [SerializeField]

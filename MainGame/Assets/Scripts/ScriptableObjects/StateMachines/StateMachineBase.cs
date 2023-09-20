@@ -1,25 +1,27 @@
 namespace MainGame.ScriptableObjects.StateMachines
 {
-    using MainGame.ScriptableObjects.StateMachines.States;
-    using MainGame.ScriptableObjects.StateMachines.Transitions;
+    using MainGame.ScriptableObjects.StateMachines.Interfaces;
     using System.Linq;
     using UnityEngine;
 
-    public abstract class StateMachineBase : ScriptableObject
+    public abstract class StateMachineBase<T> : ScriptableObject, IStateMachine<StateMachineBase<T>, T>
+        where T : IState<StateMachineBase<T>, T>
     {
-        public StateBase CurrentState => _currentState;
+        public T CurrentState => _currentState;
 
         [Header("State")]
         [SerializeField]
-        private StateBase _currentState;
+        private T _currentState;
 
         public void CheckTransition()
         {
             _currentState.UpdateState(this);
-            foreach (TransitionBase transition in _currentState.Transitions.Where(transition => transition.Condition.CheckCondition(this)))
+
+            foreach (ITransition<StateMachineBase<T>, T> transition 
+                in _currentState.Transitions.Where(transition => transition.Condition.CheckCondition(this)))
             {
                 _currentState.ExitState(this);
-                _currentState = transition.NextState;
+                _currentState = (T)transition.NextState;
                 _currentState.EnterState(this);
             }
         }
