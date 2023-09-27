@@ -1,19 +1,15 @@
 ﻿namespace MainGame.ScriptableObjects.StateMachines.Transitions
 {
     using MainGame.ScriptableObjects.StateMachines.Conditions;
+    using MainGame.ScriptableObjects.StateMachines.Interfaces;
     using MainGame.ScriptableObjects.StateMachines.States;
     using UnityEngine;
 
-    public abstract class TransitionBase : ScriptableObject
+    public abstract class TransitionBase<T> : ScriptableObject, ITransition<T, StateBase<T>>
+        where T : IStateMachine<T, StateBase<T>>
     {
-        public StateBase NextState => _nextState;
+        public abstract IState<T, StateBase<T>> NextState { get; }
 
-        public ConditionBase Condition => _condition;
-
-        [SerializeField]
-        private StateBase _nextState;
-
-        [SerializeField]
-        private ConditionBase _condition;
+        public abstract ICondition<T, StateBase<T>> Condition { get; }
     }
 }

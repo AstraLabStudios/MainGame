@@ -1,9 +1,9 @@
 ﻿namespace MainGame.ScriptableObjects.StateMachines.Interfaces
 {
-    public interface IStateMachine<in TObject, out TState>
+    public interface ICondition<out TObject, in TState>
         where TObject : IStateMachine<TObject, TState>
         where TState : IState<TObject, TState>
     {
-        public void CheckTransition();
+        public abstract bool CheckCondition(IStateMachine<TObject, TState> context);
     }
 }
